@@ -1,0 +1,7 @@
+/node_modules
+/coverage
+/lib
+scratchpad.local
+npm-debug.log
+yarn-error.log
+logs/*.log

@@ -1,0 +1,45 @@
+{
+  "name": "gumroad-review-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib",
+  "scripts": {
+    "start": "node lib/index.js",
+    "build": "gulp build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anoopmd/gumroad-review-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anoopmd/gumroad-review-backend/issues"
+  },
+  "homepage": "https://github.com/anoopmd/gumroad-review-backend#readme",
+  "dependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/register": "^7.15.3",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-preset-env": "^1.7.0",
+    "config": "^3.3.6",
+    "del": "^6.0.0",
+    "express": "^4.17.1",
+    "gulp-babel": "^8.0.0",
+    "gulp-cli": "^2.3.0",
+    "js-yaml": "^4.1.0",
+    "knex": "^0.12.7",
+    "mock-knex": "^0.4.9"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/runtime": "^7.15.4",
+    "gulp": "^3.9.1",
+    "gulp-changed": "^4.0.3",
+    "gulp-load-plugins": "^2.0.7",
+    "gulp-print": "^2.0.1"
+  }
+}
