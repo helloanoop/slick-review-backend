@@ -1,7 +1,7 @@
 {
-  "name": "gumroad-review-backend",
+  "name": "slick-review-backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Slick Review Backend Service",
   "main": "lib",
   "scripts": {
     "start": "node lib/index.js",
@@ -10,39 +10,39 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anoopmd/gumroad-review-backend.git"
+    "url": "git+https://github.com/anoopmd/slick-review-backend.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Anoop M D",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anoopmd/gumroad-review-backend/issues"
+    "url": "https://github.com/anoopmd/slick-review-backend/issues"
   },
-  "homepage": "https://github.com/anoopmd/gumroad-review-backend#readme",
+  "homepage": "https://github.com/anoopmd/slick-review-backend#readme",
   "dependencies": {
-    "@babel/cli": "^7.15.4",
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
-    "@babel/register": "^7.15.3",
-    "babel-plugin-add-module-exports": "^1.0.4",
-    "babel-preset-env": "^1.7.0",
     "config": "^3.3.6",
-    "del": "^6.0.0",
     "express": "^4.17.1",
     "gulp-babel": "^8.0.0",
-    "gulp-cli": "^2.3.0",
     "hashmap": "^2.4.0",
     "http-status": "^1.5.0",
     "js-yaml": "^4.1.0",
     "knex": "^0.12.7",
-    "mock-knex": "^0.4.9",
     "mysql": "^2.18.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-preset-env": "^1.7.0",
     "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/register": "^7.15.3",
     "@babel/runtime": "^7.15.4",
+    "del": "^6.0.0",
     "gulp": "^3.9.1",
     "gulp-changed": "^4.0.3",
+    "gulp-cli": "^2.3.0",
     "gulp-load-plugins": "^2.0.7",
-    "gulp-print": "^2.0.1"
+    "gulp-print": "^2.0.1",
+    "mock-knex": "^0.4.9"
   }
 }
