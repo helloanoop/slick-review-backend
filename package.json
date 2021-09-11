@@ -30,9 +30,12 @@
     "express": "^4.17.1",
     "gulp-babel": "^8.0.0",
     "gulp-cli": "^2.3.0",
+    "hashmap": "^2.4.0",
+    "http-status": "^1.5.0",
     "js-yaml": "^4.1.0",
     "knex": "^0.12.7",
-    "mock-knex": "^0.4.9"
+    "mock-knex": "^0.4.9",
+    "mysql": "^2.18.1"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.15.0",

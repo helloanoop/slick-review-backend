@@ -1,0 +1,1 @@
+INSERT INTO slick_product (`name`, `description`, `price`, `image_url`) VALUES('The Minimalist Entrepreneur', 'How Great Founders Do More with Less', 49.00, 'the-minimalist-entrepreneur.jpg');

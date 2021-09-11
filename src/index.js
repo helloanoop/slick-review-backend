@@ -4,6 +4,8 @@ import http from 'http';
 import express from 'express';
 import config from 'config';
 
+import productRoute from './product';
+
 let app = express();
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -19,8 +21,10 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => res.json({
-  'text': 'Hello Gumroad'
+  'text': 'Slick services are operational'
 }));
+
+app.use(productRoute);
 
 app.server = http.createServer(app);
 if(config.env !== 'test') {
