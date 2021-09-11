@@ -38,6 +38,33 @@ class ProductController {
         });
       });
   }
+
+  /**
+   * Handles get product by id request
+   *
+   * @static
+   * @param  {object}   req  - Express request object
+   * @param  {object}   res  - Express response object
+   * @param  {function} next - callback
+   * @return {undefined}
+   */
+  static findById(req, res, next) {
+    let request = new Request(req);
+    let productManager = new ProductManager(request);
+    let id = req.params.id;
+
+    productManager
+      .findById(id)
+      .then((product) => {
+        return  res.status(HttpStatus.OK).json(product);
+      })
+      .catch((error) => {
+        console.log(error);
+        return  res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+          message: 'Unable to fetch product by id'
+        });
+      });
+  }
 }
 
 export default ProductController;
