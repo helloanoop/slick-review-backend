@@ -1,6 +1,7 @@
 'use strict';
 
 import ProductEntity from '../entity/product';
+import ProductRatingEntity from '../entity/product-rating';
 
 /**
  * The Product Manager
@@ -48,9 +49,12 @@ class ProductManager {
   async findById(id) {
     try {
       let productEntity = new ProductEntity(this.request);
-      let products = await productEntity.findById(id);
+      let productRatingEntity = new ProductRatingEntity(this.request);
+      let product = await productEntity.findById(id);
 
-      return products;
+      product.ratings = await productRatingEntity.getAllByProductId(id);
+
+      return product;
     } catch (error) {
       return Promise.reject(error);
     }
