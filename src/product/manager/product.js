@@ -25,7 +25,6 @@ class ProductManager {
    *
    * @async
    * @return {Promise}
-   * @throws {LibError}
    */
   async getAll() {
     try {
@@ -44,7 +43,6 @@ class ProductManager {
    * @async
    * @param  {Number} id  - The product id
    * @return {Promise}
-   * @throws {LibError}
    */
   async findById(id) {
     try {
@@ -55,6 +53,26 @@ class ProductManager {
       product.ratings = await productRatingEntity.getAllByProductId(id);
 
       return product;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }
+
+  /**
+   * Add product rating
+   *
+   * @async
+   * @param  {Number} productId - The product id
+   * @param  {Number} rating    - The product rating
+   * @param  {String} review    - The product review
+   * @return {Promise}
+   */
+  async addRating(productId, rating, review) {
+    try {
+      let productRatingEntity = new ProductRatingEntity(this.request);
+      let createdRatingId = await productRatingEntity.create(productId, rating, review);
+
+      return await productRatingEntity.findById(createdRatingId);
     } catch (error) {
       return Promise.reject(error);
     }

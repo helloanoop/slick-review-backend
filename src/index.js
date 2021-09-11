@@ -3,6 +3,7 @@
 import http from 'http';
 import express from 'express';
 import config from 'config';
+import bodyParser from 'body-parser';
 
 import productRoute from './product';
 
@@ -19,6 +20,9 @@ app.use((req, res, next) => {
     return next();
   }
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/', (req, res) => res.json({
   'text': 'Slick services are operational'

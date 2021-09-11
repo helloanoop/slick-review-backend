@@ -4,7 +4,7 @@
 
 CREATE TABLE `slick_product_rating` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `comment`  varchar(2048) COLLATE utf8_unicode_ci NULL,
+  `review`  varchar(2048) COLLATE utf8_unicode_ci NULL,
   `rating` decimal(2,1) COLLATE utf8_unicode_ci NOT NULL,
 
   `product_id` int(10) unsigned NOT NULL,

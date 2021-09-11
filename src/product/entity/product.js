@@ -43,7 +43,6 @@ class ProductEntity extends BaseEntity {
    * @async
    * @param  {Number} id  - The product id
    * @return {Promise}
-   * @throws {LibError}
    */
   async findById(id) {
     try{
