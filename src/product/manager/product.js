@@ -1,8 +1,10 @@
 'use strict';
 
+import Joi from 'joi';
 import ProductEntity from '../entity/product';
 import ProductRatingEntity from '../entity/product-rating';
 import realtimeQueue from '../../realtime/queue';
+import addReviewRequestSchema from '../schema/review';
 
 /**
  * The Product Manager
@@ -19,6 +21,25 @@ class ProductManager {
    */
   constructor(request) {
     this.request = request;
+  }
+
+  /**
+   * Validates add review request
+   *
+   * @param  {object} data - The data
+   * @return {object}
+   */
+  async validateAddReviewRequest(data) {
+    return new Promise((resolve, reject) => {
+      let {error, value} = Joi.validate(data, addReviewRequestSchema, {abortEarly: false});
+
+      if(error) {
+        error.badRequest = true;
+        return reject(error);
+      }
+
+      return resolve(value);
+    });
   }
 
   /**
@@ -82,6 +103,12 @@ class ProductManager {
    */
   async addRating(productId, rating, review) {
     try {
+      await this.validateAddReviewRequest({
+        product_id: productId,
+        rating: rating,
+        review: review
+      });
+
       let productRatingEntity = new ProductRatingEntity(this.request);
       let createdRatingId = await productRatingEntity.create(productId, rating, review);
 
