@@ -33,7 +33,7 @@ app.use(productRoute);
 app.server = http.createServer(app);
 if(config.env !== 'test') {
   app.server.listen(config.server.port, function() {
-    console.log(`Gumroad Service is up at port: ${config.server.port} !!`);
+    console.log(`Slick Service is up at port: ${config.server.port} !!`);
   });
 }
 
