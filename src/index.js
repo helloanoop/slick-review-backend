@@ -4,23 +4,16 @@ import http from 'http';
 import express from 'express';
 import config from 'config';
 import bodyParser from 'body-parser';
+import socketio from 'socket.io';
+import cors from 'cors';
 
 import productRoute from './product';
 
-let app = express();
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Request-Method', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH');
+import RealtimeProcessor from './realtime/processor';
 
-  if(req.method === 'OPTIONS') {
-    res.writeHead(200);
-    return res.end();
-  } else {
-    return next();
-  }
-});
+const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
@@ -36,5 +29,14 @@ if(config.env !== 'test') {
     console.log(`Slick Service is up at port: ${config.server.port} !!`);
   });
 }
+
+const io = socketio(app.server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
+
+new RealtimeProcessor(io);
 
 module.exports = app;

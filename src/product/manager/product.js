@@ -2,6 +2,7 @@
 
 import ProductEntity from '../entity/product';
 import ProductRatingEntity from '../entity/product-rating';
+import realtimeQueue from '../../realtime/queue';
 
 /**
  * The Product Manager
@@ -59,6 +60,18 @@ class ProductManager {
   }
 
   /**
+   * Publish rating add event to realtime queue
+   *
+   * @async
+   * @param  {string} event   - The event
+   * @param  {object} payload - The payload
+   * @return {Promise}
+   */
+  async publishToRealtimeQueue(event, payload) {
+    await realtimeQueue.create(event, payload).save();
+  }
+
+  /**
    * Add product rating
    *
    * @async
@@ -72,7 +85,14 @@ class ProductManager {
       let productRatingEntity = new ProductRatingEntity(this.request);
       let createdRatingId = await productRatingEntity.create(productId, rating, review);
 
-      return await productRatingEntity.findById(createdRatingId);
+      let createdRating = await productRatingEntity.findById(createdRatingId);
+
+      await this.publishToRealtimeQueue('product-rating:added', {
+        rating: createdRating,
+        product_id: productId
+      });
+
+      return createdRating;
     } catch (error) {
       return Promise.reject(error);
     }
