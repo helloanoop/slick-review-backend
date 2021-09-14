@@ -1,5 +1,5 @@
 # Slick Review Backend Services
-Backend Services for the Slick Review App.
+Backend Services for the Slick Review App - Code challenge that I did while interviewing for Gumroad.
 
 ## Dependencies
 * Npm >= v6
