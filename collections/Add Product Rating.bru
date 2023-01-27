@@ -1,0 +1,13 @@
+name Add Product Rating
+method POST
+url {{baseUrl}}/api/slick/v1/products/1/rating
+type http-request
+body-mode json
+seq 1
+
+body(type=json)
+  {
+    "rating": 5,
+    "review": "One of the best books ever"
+  }
+/body
