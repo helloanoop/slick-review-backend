@@ -1,0 +1,15 @@
+name Create Product
+method POST
+url {{baseUrl}}/api/slick/v1/products
+type http-request
+body-mode json
+seq 1
+
+body(type=json)
+  {
+      "name": "The Minimalist Entrepreneur",
+      "description": "How Great Founders Do More with Less",
+      "price": 49,
+      "image_url": "the-minimalist-entrepreneur.jpg"
+  }
+/body
